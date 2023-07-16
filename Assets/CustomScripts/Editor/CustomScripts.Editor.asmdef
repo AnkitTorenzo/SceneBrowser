@@ -1,6 +1,6 @@
 {
-    "name": "Custom_Editor",
-    "rootNamespace": "",
+    "name": "CustomScripts.Editor",
+    "rootNamespace": "CustomScripts.Editor",
     "references": [],
     "includePlatforms": [
         "Editor"
