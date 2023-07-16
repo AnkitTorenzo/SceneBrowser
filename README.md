@@ -10,10 +10,10 @@ With this tool, my goal is to create a small form where you can navigate to your
  - In the window, you will get the list of all the scenes added to your build settings. This list is updated with the list of build settings list.
  - Visual breakdown
     - In the list, you will see a checkbox representing the status of the scene in the build settings.
-    ![Check Box Image]("Assets/CustomScripts/Editor/SceneWindow/ScreenShots/checkbox.png")
+    ![Check Box Image](Assets/CustomScripts/Editor/SceneWindow/ScreenShots/checkbox.png)
     - Then there is the name of the scene.
 
-    - Then there are two buttons that are used to "Open the scene" ![Open Button Image]("Assets/CustomScripts/Editor/SceneWindow/ScreenShots/open.png") and to "Select the scene" ![Select Button Image]("Assets/CustomScripts/Editor/SceneWindow/ScreenShots/find.png") in the project window.
+    - Then there are two buttons that are used to "Open the scene" ![Open Button Image](Assets/CustomScripts/Editor/SceneWindow/ScreenShots/open.png) and to "Select the scene" ![Select Button Image](Assets/CustomScripts/Editor/SceneWindow/ScreenShots/find.png) in the project window.
 
 ## How to contribute?
 I don't have anything written in stone so to speak. I am new to this Open Source Software thing. I am not even sure what kind of rules should be there and TBH I am not as big of a fan of bureaucracy. Just keep in mind to not push your code directly and to create a PR instead. While creating the PR make sure that you take a back-merge(where your branch is up to date with the branch from where your branch originated plus all of your commits). Just for me to make sure that there will be no conflicts if I decide to approve and merge the PR.
