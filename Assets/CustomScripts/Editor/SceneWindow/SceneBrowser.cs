@@ -15,6 +15,7 @@ public class SceneBrowser : EditorWindow
         wnd.titleContent = new GUIContent("SceneBrowser");
     }
 
+    private Scene activeScene;
     private VisualElement root;
     private ScrollView scrollView;
     private EditorBuildSettingsScene[] scenes;
@@ -38,10 +39,10 @@ public class SceneBrowser : EditorWindow
     {
         scrollView.Clear();
 
-        Scene activeScene = EditorSceneManager.GetActiveScene();
+        activeScene = EditorSceneManager.GetActiveScene();
         scenes = EditorBuildSettings.scenes;
         int length = scenes.Length;
-        for(int i = 0; i < length; i++)
+        for (int i = 0; i < length; i++)
         {
             EditorBuildSettingsScene scene = scenes[i];
             bool isActive = activeScene.path == scene.path;
@@ -66,11 +67,9 @@ public class SceneBrowser : EditorWindow
 
     private void ChangeSceneSetting(string path, bool newValue)
     {
-        Debug.Log($"Received toggle value changed event: value = {newValue} @ path: {path}");
         int index = Array.FindIndex(scenes, x => x.path == path);
 
-        Debug.Log($"found the scene at the index of {index}");
-        if(index == -1)
+        if (index == -1)
             return;
 
         EditorBuildSettingsScene scene = scenes[index];
@@ -81,8 +80,7 @@ public class SceneBrowser : EditorWindow
 
     private void SetButtonOpeSelectScene(EditorBuildSettingsScene item, VisualElement row)
     {
-        Button btnSelect = new Button();
-        btnSelect.tooltip = "Select The Scene";
+        Button btnSelect = new() { tooltip = "Select The Scene" };
         btnSelect.AddToClassList("button");
         btnSelect.AddToClassList("btnSelect");
         btnSelect.clicked += () => SelectScene(item.path);
@@ -91,8 +89,7 @@ public class SceneBrowser : EditorWindow
 
     private void SetButtonToOpenScene(EditorBuildSettingsScene item, VisualElement row)
     {
-        Button btnOpen = new Button();
-        btnOpen.tooltip = "Open The Scene";
+        Button btnOpen = new() { tooltip = "Open The Scene" };
         btnOpen.AddToClassList("button");
         btnOpen.AddToClassList("btnOpen");
         btnOpen.clicked += () => OpenScene(item.path);
@@ -107,6 +104,14 @@ public class SceneBrowser : EditorWindow
 
     private void OpenScene(string path)
     {
+
+        if (EditorUtility.DisplayDialog("Wannt to Save?", "Do you want to save current scene?", "Yes", "No"))
+        {
+            Debug.Log($"Saving active scene before opening new scene.");
+            EditorSceneManager.SaveScene(activeScene);
+        }
+
         EditorSceneManager.OpenScene(path);
+        BuildSceneRowElements();
     }
 }
